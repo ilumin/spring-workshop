@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+
+  mariadb:
+    container_name: spring-db
+    image: bitnami/mariadb:latest
+    environment:
+      - MARIADB_USER=app
+      - MARIADB_PASSWORD=app
+      - MARIADB_DATABASE=app
