@@ -5,6 +5,8 @@ services:
   mariadb:
     container_name: spring-db
     image: bitnami/mariadb:latest
+    ports:
+      - 3306:3306
     environment:
       - MARIADB_USER=app
       - MARIADB_PASSWORD=app
