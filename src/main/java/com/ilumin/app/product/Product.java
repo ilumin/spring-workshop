@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -21,6 +22,15 @@ public class Product {
     private String title;
 
     @Getter @Setter
-    private Double price = 0.0;
+    private BigDecimal price;
 
+    protected Product() {
+        this.id = null;
+    }
+
+    public Product(String title, BigDecimal price) {
+        this();
+        this.title = title;
+        this.price = price;
+    }
 }
