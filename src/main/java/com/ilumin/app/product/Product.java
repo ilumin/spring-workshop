@@ -1,12 +1,14 @@
 package com.ilumin.app.product;
 
 import com.ilumin.app.category.Category;
+import com.ilumin.app.tag.Tag;
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @Entity
@@ -26,6 +28,9 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    @ManyToMany(mappedBy = "products")
+    private Set<Tag> tags;
 
     protected Product() {
         this.id = null;
@@ -59,5 +64,14 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void addTag(Tag tag) {
+        tag.addProduct(this);
+        this.tags.add(tag);
     }
 }

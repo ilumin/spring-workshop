@@ -34,8 +34,9 @@ public class Tag {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void addProduct(Product product) {
+        product.addTag(this);
+        this.products.add(product);
     }
 
     public String getName() {
